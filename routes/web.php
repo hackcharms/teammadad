@@ -1,5 +1,9 @@
 <?php
 
+
+use App\District;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+
+Route::get('/test', function () {
+    $districts=
+DB::table('districts')->insertOrIgnore(
+    json_decode(file_get_contents(storage_path('app/districts-and-codes.json')), true)
+);
+
+
+
+    dd($districts);
+});
+
 Route::get('/givehope',
 function(){
     return view('givehope');

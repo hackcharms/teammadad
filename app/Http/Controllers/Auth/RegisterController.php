@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\District;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -61,6 +62,12 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function showRegistrationForm()
+    {
+        $districts=District::all();
+        return view('auth.register',compact('districts'));
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -69,7 +76,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data['college']);
+        
         return User::create([
             'name' => $data['name'],
             'mobile_number'=>$data['mobile_number'],

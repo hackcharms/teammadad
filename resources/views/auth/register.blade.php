@@ -7,7 +7,18 @@
             <div class="card">
                 <div class="card-header " style="background: rgba(247, 202, 68,.7);">
                     <h3>Register</h3>
+
                 </div>
+@if($errors->any())
+<ul>
+    <li>
+
+        @foreach($errors->all() as $error)
+        {{json_encode($error)}}
+        @endforeach
+    </li>
+</ul>
+@endif
 
                 <div class="card-body " >
                     <form method="POST" action="{{ route('register') }}">

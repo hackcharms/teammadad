@@ -14,8 +14,10 @@ class CreateDistrictsTable extends Migration
     public function up()
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->string('name')->notNull()->unique;
-            $table->integer('code')->notNull()->unique;
+
+            $table->tinyInteger('code')->notNull()->unique()->primary();
+            $table->string('name')->notNull()->unique();
+
             $table->timestamps();
         });
     }
@@ -27,6 +29,8 @@ class CreateDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('district');
+
+        Schema::dropIfExists('districts');
+
     }
 }

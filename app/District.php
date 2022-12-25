@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
-    //protected $fillable=['district','position','user_id'];
-    // public function users()
-    // {
-    //     $this->hasMany(User::class);
-    // }
+    protected $fillable=['code','name'];
+    
     protected $primaryKey='code';
     public function users()
     {
